@@ -1,3 +1,4 @@
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import React, { useEffect } from "react";
 import { Button, StyleSheet, View } from "react-native";
 
@@ -18,6 +19,10 @@ function HomeScreen({ navigation }) {
       <Button
         title="디테일03"
         onPress={() => navigation.push("Detail", { id: 3 })}
+      />
+      <Button
+        title="Headerless"
+        onPress={() => navigation.push("Headerless")}
       />
     </View>
   );
