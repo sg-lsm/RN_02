@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Drawer = createDrawerNavigator();
@@ -31,9 +31,30 @@ function App() {
         initialRouteName="Home"
         drawerPosition="left"
         backBehavior="history"
+        screenOptions={{
+          drawerActiveBackgroundColor:'#fb8c00',
+          drawerActiveTintColor:"white",
+          // headerShown: false
+        }}
+        drawerContent={
+          ({navigation})=>(
+            <SafeAreaView>
+              <Text>Custom Drawer</Text>
+              <Button title="Drawer 닫기" onPress={()=>navigation.closeDrawer()} />
+            </SafeAreaView>
+          )
+        }
       >
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Setting" component={SettingScreen} />
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{ title: "홈" }}
+        />
+        <Drawer.Screen
+          name="Setting"
+          component={SettingScreen}
+          options={{ title: "설정" }}
+        />
       </Drawer.Navigator>
     </NavigationContainer>
   );
